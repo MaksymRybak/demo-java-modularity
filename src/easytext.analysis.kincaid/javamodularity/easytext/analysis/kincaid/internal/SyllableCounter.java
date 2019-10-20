@@ -1,4 +1,4 @@
-package javamodularity.easytext.analysis.internal;
+package javamodularity.easytext.analysis.kincaid.internal;
 
 public class SyllableCounter {
 
@@ -19,5 +19,5 @@ public class SyllableCounter {
   private static boolean isVowel(char letter) {
      return letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u';
   }
-  
+
 }

@@ -7,8 +7,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ServiceLoader;
 
-import javamodularity.easytext.analysis.FleschKincaid;
+import javamodularity.easytext.analysis.api.Analyzer;
+import static javamodularity.easytext.analysis.api.Preprocessing.toSentences;
 
 public class Main {
 
@@ -24,34 +26,11 @@ public class Main {
 
       List<List<String>> sentences = toSentences(text);
 
-      System.out.println("Flesch-Kincaid: " + new FleschKincaid().analyze(sentences));
-
-   }
-
-   public static List<List<String>> toSentences(String text) {
-      String removedBreaks = text.replaceAll("\\r?\\n", " ");
-      ArrayList<List<String>> sentences = new ArrayList<>();
-      for (String rawSentence : removedBreaks.split("[\\.\\?\\!]")) {
-         List<String> words = toWords(rawSentence);
-         if (words.size() > 0) {
-            sentences.add(words);
-         }
+      Iterable<Analyzer> analyzers = ServiceLoader.load(Analyzer.class);
+      for(Analyzer analyzer: analyzers) {
+         System.out.println(analyzer.getName() + ": " + analyzer.analyze(sentences));
       }
 
-      return sentences;
-   }
-
-   public static List<String> toWords(String sentence) {
-      String[] rawWords = sentence.split("\\s+");
-      List<String> words = new ArrayList<>();
-      for (String rawWord : rawWords) {
-         String word = rawWord.replaceAll("\\W", "");
-         if (word.length() > 0) {
-            words.add(word);
-         }
-      }
-
-      return words;
    }
 
 }
