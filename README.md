@@ -2,11 +2,7 @@
 
 **Command to compile source code**
 
-> javac --module-source-path src -d out <all \*.java>
-
-**Command to execute your module**
-
-> java --module-path out -m <module name>/<FQN of module's main class>
+> `javac --module-source-path src -d out <your *.java>`
 
 **Command to create jars of your modules (using linux terminal)**
 
@@ -20,3 +16,7 @@
 
 > rm -rf image && \
 > jlink --module-path jars/:\$JAVA_HOME/jmods --add-modules easytext.cli --strip-debug --compress=2 --output=image
+
+**Command to execute your module**
+
+> `java --module-path out -m <your module name>/<FQN of module's main class>`
