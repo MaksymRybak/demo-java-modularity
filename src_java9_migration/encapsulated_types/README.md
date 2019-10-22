@@ -1,4 +1,4 @@
-# Demo for presenting errors used encapsulated jdk class
+# Demo for presenting errors if you use encapsulated in java9 jdk classes
 
 **compile with java8 to see java warning**
 **compile with java9 to see java error**
