@@ -1,4 +1,4 @@
-# Demo for presenting errors if you use not standard java modules (ee modules, eg. java.xml.bind)
+# Demo for presenting errors if you use not standard java modules (eg modules, eg. java.xml.bind)
 
 **it's better check your code using jdeps tool**
 
